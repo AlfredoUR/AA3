@@ -1,5 +1,5 @@
-// AA3 --> Banco de peces
 // Alfredo Ugarte y Pol Blesa
+// AA3 --> Banco de peces
 
 // Variables
 float incremento_tiempo = 0.1;
@@ -40,5 +40,6 @@ void draw() {
   stroke(255);
   strokeWeight(2.0);
   rectMode(CENTER);
-  rect(destino.x, destino.y, 30.0, 30.0);
+  translate(destino.x, destino.y, destino.z);
+  box(25);
 }

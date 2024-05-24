@@ -103,6 +103,7 @@ class peces {
 
   void pinta_peces() {
     fill(#efb810);
+    sphereDetail(100);
     noStroke();
     lights();
     sphere(tamanyo_pez);
