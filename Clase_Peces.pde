@@ -5,7 +5,7 @@ class peces {
   // Atributos
   PVector posicion_pez;
   PVector velocidad_pez;
-  PVector acceleracion_pez;
+  PVector aceleracion_pez;
 
   color color_pez;
 
@@ -20,11 +20,10 @@ class peces {
 
 
   // Constructor
-
   peces(boolean leader, PVector posicion, PVector velocidad, float masa, float tamanyo, float const_destino, float const_leader, float const_friccion, color colour) {
     posicion_pez = new PVector (0.0, 0.0, 0.0);
     velocidad_pez = new PVector (0.0, 0.0, 0.0);
-    acceleracion_pez = new PVector (0.0, 0.0, 0.0);
+    aceleracion_pez = new PVector (0.0, 0.0, 0.0);
 
     posicion_pez.set(posicion);
     velocidad_pez.set(velocidad);
@@ -43,8 +42,12 @@ class peces {
 
   // Métodos
   void calcular_pez() {
-    PVector acumulador_fuerza = new PVector (0.0, 0.0, 0.0);
+    PVector acumulador_fuerza;
     PVector vector_usable = new PVector(0.0, 0.0, 0.0);
+
+    acumulador_fuerza = new PVector (0.0, 0.0, 0.0);
+    vector_usable = new PVector (0.0, 0.0, 0.0);
+
 
     vector_usable.x = destino.x - posicion_pez.x;
     vector_usable.y = destino.y - posicion_pez.y;
@@ -84,17 +87,17 @@ class peces {
       acumulador_fuerza.z += vector_usable.z;
     }
 
-    acumulador_fuerza.x += -1.0 * constante_friccion / masa_pez;
-    acumulador_fuerza.y += -1.0 * constante_friccion / masa_pez;
-    acumulador_fuerza.z += -1.0 * constante_friccion / masa_pez;
+    acumulador_fuerza.x += -1.0 * constante_friccion * velocidad_pez.x;
+    acumulador_fuerza.y += -1.0 * constante_friccion * velocidad_pez.y;
+    acumulador_fuerza.z += -1.0 * constante_friccion * velocidad_pez.z;
 
-    acceleracion_pez.x = acumulador_fuerza.x / masa_pez;
-    acceleracion_pez.y = acumulador_fuerza.y / masa_pez;
-    acceleracion_pez.z = acumulador_fuerza.z / masa_pez;
+    aceleracion_pez.x = acumulador_fuerza.x / masa_pez;
+    aceleracion_pez.y = acumulador_fuerza.y / masa_pez;
+    aceleracion_pez.z = acumulador_fuerza.z / masa_pez;
 
-    velocidad_pez.x = velocidad_pez.x + acceleracion_pez.x * incremento_tiempo;
-    velocidad_pez.y = velocidad_pez.y + acceleracion_pez.y * incremento_tiempo;
-    velocidad_pez.z = velocidad_pez.z + acceleracion_pez.z * incremento_tiempo;
+    velocidad_pez.x = velocidad_pez.x + aceleracion_pez.x * incremento_tiempo;
+    velocidad_pez.y = velocidad_pez.y + aceleracion_pez.y * incremento_tiempo;
+    velocidad_pez.z = velocidad_pez.z + aceleracion_pez.z * incremento_tiempo;
 
     posicion_pez.x = posicion_pez.x + velocidad_pez.x * incremento_tiempo;
     posicion_pez.y = posicion_pez.y + velocidad_pez.y * incremento_tiempo;
@@ -102,7 +105,8 @@ class peces {
   }
 
   void pinta_peces() {
-    fill(#efb810);
+    translate(posicion_pez.x, posicion_pez.y, posicion_pez.z);
+    fill(color_pez);
     sphereDetail(100);
     noStroke();
     lights();
