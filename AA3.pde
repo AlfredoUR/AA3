@@ -15,11 +15,11 @@ void setup() {
   // Quitamos el cursor
   noCursor();
 
-  destino = new PVector (width / 2.0, height / 2.0, 50.0);
+  destino = new PVector (width / 2.0, height / 2.0, -400.0);
 
-  pezLider = new peces(true, new PVector(width/2.0, height, 0.0), new PVector(0.0, 0.0, 0.0), 1.0, 25.0, 0.9, 0.0, 0.08, color(255, 0, 0));
-  pez1 = new peces(false, new PVector(width/2.0, height, 0.0), new PVector(0.0, 0.0, 0.0), 1.0, 15.0, 0.2, 0.8, 0.02, color(0, 255, 0));
-  pez2 = new peces(false, new PVector(width/2.0, height, 0.0), new PVector(0.0, 0.0, 0.0), 1.0, 15.0, 0.8, 0.1, 0.02, color(0, 0, 255));
+  pezLider = new peces(true, new PVector(random(0.0, width), random(height / 2.0, height), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 1.0, 25.0, 0.7, 0.0, 0.08, color(255, 0, 0));
+  pez1 = new peces(false, new PVector(random(0.0, width), random(height / 2.0, height), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 1.0, 25.0, 0.2, 0.8, 0.02, color(255, 0, 0));
+  pez2 = new peces(false, new PVector(random(0.0, width), random(height / 2.0, height), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 1.0, 25.0, 0.8, 0.2, 0.02, color(255, 0, 0));
 }
 
 // Draw

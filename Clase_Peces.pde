@@ -67,7 +67,7 @@ class peces {
     acumulador_fuerza.y = vector_usable.y;
     acumulador_fuerza.z = vector_usable.z;
 
-    if (!lider) {
+    if (lider == false) {
       vector_usable.x = pezLider.posicion_pez.x - posicion_pez.x;
       vector_usable.y = pezLider.posicion_pez.y - posicion_pez.y;
       vector_usable.z = pezLider.posicion_pez.z - posicion_pez.z;
