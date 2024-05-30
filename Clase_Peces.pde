@@ -43,7 +43,7 @@ class peces {
   // Métodos
   void calcular_pez() {
     PVector acumulador_fuerza;
-    PVector vector_usable = new PVector(0.0, 0.0, 0.0);
+    PVector vector_usable;
 
     acumulador_fuerza = new PVector (0.0, 0.0, 0.0);
     vector_usable = new PVector (0.0, 0.0, 0.0);
