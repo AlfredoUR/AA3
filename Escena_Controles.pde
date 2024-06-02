@@ -1,6 +1,8 @@
 // Controles
 
 void escenaControles() {
+  pushMatrix();
+  translate(0.0, 0.0, 125);
   strokeWeight(2.5);
   stroke(125);
   stroke(225);
@@ -15,4 +17,5 @@ void escenaControles() {
   text(textDos, 35, 150 + 35, 330, height - 85);
   String textTres = "Para cambiar el destino general de las entidades, mantén pulsado '1' (acercar) o '2' (alejar).";
   text(textTres, 35, 300 + 35, 330, height - 85);
+  popMatrix();
 }

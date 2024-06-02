@@ -20,7 +20,7 @@ class peces {
 
 
   // Constructor
-  peces(boolean leader, PVector posicion, PVector velocidad, float masa, float tamanyo, float const_destino, float const_leader, float const_friccion, color colour) {
+  peces(boolean leader, PVector posicion, PVector velocidad, float masa, float tamanyo, float const_destino, float const_leader, float const_friccion, color c) {
     posicion_pez = new PVector (0.0, 0.0, 0.0);
     velocidad_pez = new PVector (0.0, 0.0, 0.0);
     aceleracion_pez = new PVector (0.0, 0.0, 0.0);
@@ -28,7 +28,7 @@ class peces {
     posicion_pez.set(posicion);
     velocidad_pez.set(velocidad);
 
-    color_pez = colour;
+    color_pez = c;
 
     masa_pez = masa;
     tamanyo_pez = tamanyo;
