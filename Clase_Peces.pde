@@ -49,9 +49,9 @@ class peces {
     vector_usable = new PVector (0.0, 0.0, 0.0);
 
 
-    vector_usable.x = destino.x - posicion_pez.x;
-    vector_usable.y = destino.y - posicion_pez.y;
-    vector_usable.z = destino.z - posicion_pez.z;
+    vector_usable.x = destinoPeces.x - posicion_pez.x;
+    vector_usable.y = destinoPeces.y - posicion_pez.y;
+    vector_usable.z = destinoPeces.z - posicion_pez.z;
 
     float modulo = sqrt(vector_usable.x * vector_usable.x + vector_usable.y * vector_usable.y + vector_usable.z * vector_usable.z);
 
@@ -108,10 +108,19 @@ class peces {
     pushMatrix();
     translate(this.posicion_pez.x, this.posicion_pez.y, this.posicion_pez.z);
     fill(color_pez);
-    sphereDetail(100);  
+    sphereDetail(100);
     noStroke();
     lights();
     sphere(tamanyo_pez);
     popMatrix();
   }
+
+  //void keyPressed() {
+  //  if (key == '+') {
+  //    constante_friccion += 0.1;
+  //  }
+  //  if (key == '-') {
+  //    constante_friccion -= 0.1;
+  //  }
+  //}
 }
