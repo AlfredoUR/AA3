@@ -88,7 +88,28 @@ class peces {
       acumulador_fuerza.y += vector_usable.y;
       acumulador_fuerza.z += vector_usable.z;
     }
+    // -------------------------------------------------------------------------------
+    PVector min_obstaculo = new PVector(0.0, 0.0, 0.0);
+    PVector max_obstaculo = new PVector(0.0, 0.0, 0.0);
 
+    min_obstaculo.x = obstaculo1.posicion_obstaculo.x - 0.5 * obstaculo1.anchura_obstaculo;
+    min_obstaculo.y = obstaculo1.posicion_obstaculo.y - 0.5 * obstaculo1.altura_obstaculo;
+    min_obstaculo.z = obstaculo1.posicion_obstaculo.z - 0.5 * obstaculo1.profundidad_obstaculo;
+
+    max_obstaculo.x = obstaculo1.posicion_obstaculo.x + 0.5 * obstaculo1.anchura_obstaculo;
+    max_obstaculo.y = obstaculo1.posicion_obstaculo.y + 0.5 * obstaculo1.altura_obstaculo;
+    max_obstaculo.z = obstaculo1.posicion_obstaculo.z + 0.5 * obstaculo1.profundidad_obstaculo;
+
+    if ((posicion_pez.x > min_obstaculo.x) && (posicion_pez.x < max_obstaculo.x)
+      && (posicion_pez.y > min_obstaculo.y) && (posicion_pez.y < max_obstaculo.y)
+      && (posicion_pez.z > min_obstaculo.z) && (posicion_pez.z < max_obstaculo.z)) {
+      // Som dins del voxel
+      acumulador_fuerza.x += obstaculo1.fuerza_obstaculo.x;
+      acumulador_fuerza.y += obstaculo1.fuerza_obstaculo.y;
+      acumulador_fuerza.z += obstaculo1.fuerza_obstaculo.z;
+    }
+
+    // -------------------------------------------------------------------------------
     acumulador_fuerza.x += -1.0 * constante_friccion * velocidad_pez.x;
     acumulador_fuerza.y += -1.0 * constante_friccion * velocidad_pez.y;
     acumulador_fuerza.z += -1.0 * constante_friccion * velocidad_pez.z;
@@ -107,7 +128,7 @@ class peces {
 
     if ((tiburonLider.posicion_tiburon.x + 50 == this.posicion_pez.x && tiburonLider.posicion_tiburon.y + 50== this.posicion_pez.y && tiburonLider.posicion_tiburon.z + 50 == this.posicion_pez.z)
       || (tiburon1.posicion_tiburon.x + 50 == this.posicion_pez.x && tiburon1.posicion_tiburon.y + 50 == this.posicion_pez.y && tiburon1.posicion_tiburon.z + 50 == this.posicion_pez.z) ||
-      (tiburon2.posicion_tiburon.x + 50 == this.posicion_pez.x && tiburon2.posicion_tiburon.y + 50 == this.posicion_pez.y && tiburon2.posicion_tiburon.z + 50 == this.posicion_pez.z) || 
+      (tiburon2.posicion_tiburon.x + 50 == this.posicion_pez.x && tiburon2.posicion_tiburon.y + 50 == this.posicion_pez.y && tiburon2.posicion_tiburon.z + 50 == this.posicion_pez.z) ||
       (tiburonLider.posicion_tiburon.x - 50 == this.posicion_pez.x && tiburonLider.posicion_tiburon.y - 50== this.posicion_pez.y && tiburonLider.posicion_tiburon.z - 50 == this.posicion_pez.z)
       || (tiburon1.posicion_tiburon.x - 50 == this.posicion_pez.x && tiburon1.posicion_tiburon.y - 50 == this.posicion_pez.y && tiburon1.posicion_tiburon.z - 50 == this.posicion_pez.z) ||
       (tiburon2.posicion_tiburon.x - 50 == this.posicion_pez.x && tiburon2.posicion_tiburon.y - 50 == this.posicion_pez.y && tiburon2.posicion_tiburon.z - 50 == this.posicion_pez.z)) {

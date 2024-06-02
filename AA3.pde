@@ -27,6 +27,8 @@ tiburon tiburon1;
 tiburon tiburon2;
 
 
+obstaculos obstaculo1;
+
 // Setup
 void setup() {
   // Tamaño de la pantalla --> Pantalla completa
@@ -37,6 +39,7 @@ void setup() {
   // Pantalla del menu principal
   estadoActual = EstadoPantalla.PANTALLA;
 
+  obstaculo1 = new obstaculos(new PVector(0.0, 1.0, 1.0), new PVector(width - 500.0, height - 200.0, 50.0), 100.0, 150.0, 200.0, color(255));
 
   destinoPeces = new PVector (width / 2.0, height / 2.0, -500.0);
 
@@ -112,6 +115,8 @@ void draw() {
   tiburonLider.pinta_tiburones();
   tiburon1.pinta_tiburones();
   tiburon2.pinta_tiburones();
+  
+  obstaculo1.pinta_obstaculo();
 
   switch(estadoActual) {
   case PANTALLA:
@@ -126,14 +131,14 @@ void draw() {
 void keyPressed() {
   switch (keyCode) {
   case '1':
-    destinoPeces.x += 100.0;
-    destinoPeces.y += 100.0;
-    destinoPeces.z += 100.0;
+    destinoPeces.x += 150.0;
+    destinoPeces.y += 150.0;
+    destinoPeces.z += 150.0;
     break;
   case '2':
-    destinoPeces.x -= 100.0;
-    destinoPeces.y -= 100.0;
-    destinoPeces.z -= 100.0;
+    destinoPeces.x -= 150.0;
+    destinoPeces.y -= 150.0;
+    destinoPeces.z -= 150.0;
     break;
   case TAB:
     estadoActual = EstadoPantalla.CONTROLES;
