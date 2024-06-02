@@ -14,13 +14,14 @@ class peces {
 
   boolean lider;
 
+  float constante_huir;
   float constante_destino;
   float constante_lider;
   float constante_friccion;
 
 
   // Constructor
-  peces(boolean leader, PVector posicion, PVector velocidad, float masa, float tamanyo, float const_destino, float const_leader, float const_friccion, color c) {
+  peces(boolean leader, PVector posicion, PVector velocidad, float masa, float tamanyo, float const_huir, float const_destino, float const_leader, float const_friccion, color c) {
     posicion_pez = new PVector (0.0, 0.0, 0.0);
     velocidad_pez = new PVector (0.0, 0.0, 0.0);
     aceleracion_pez = new PVector (0.0, 0.0, 0.0);
@@ -33,6 +34,7 @@ class peces {
     masa_pez = masa;
     tamanyo_pez = tamanyo;
 
+    constante_huir = const_huir;
     constante_destino = const_destino;
     constante_lider = const_leader;
     constante_friccion = const_friccion;
@@ -102,6 +104,17 @@ class peces {
     posicion_pez.x = posicion_pez.x + velocidad_pez.x * incremento_tiempo;
     posicion_pez.y = posicion_pez.y + velocidad_pez.y * incremento_tiempo;
     posicion_pez.z = posicion_pez.z + velocidad_pez.z * incremento_tiempo;
+
+    if ((tiburonLider.posicion_tiburon.x + 50 == this.posicion_pez.x && tiburonLider.posicion_tiburon.y + 50== this.posicion_pez.y && tiburonLider.posicion_tiburon.z + 50 == this.posicion_pez.z)
+      || (tiburon1.posicion_tiburon.x + 50 == this.posicion_pez.x && tiburon1.posicion_tiburon.y + 50 == this.posicion_pez.y && tiburon1.posicion_tiburon.z + 50 == this.posicion_pez.z) ||
+      (tiburon2.posicion_tiburon.x + 50 == this.posicion_pez.x && tiburon2.posicion_tiburon.y + 50 == this.posicion_pez.y && tiburon2.posicion_tiburon.z + 50 == this.posicion_pez.z) || 
+      (tiburonLider.posicion_tiburon.x - 50 == this.posicion_pez.x && tiburonLider.posicion_tiburon.y - 50== this.posicion_pez.y && tiburonLider.posicion_tiburon.z - 50 == this.posicion_pez.z)
+      || (tiburon1.posicion_tiburon.x - 50 == this.posicion_pez.x && tiburon1.posicion_tiburon.y - 50 == this.posicion_pez.y && tiburon1.posicion_tiburon.z - 50 == this.posicion_pez.z) ||
+      (tiburon2.posicion_tiburon.x - 50 == this.posicion_pez.x && tiburon2.posicion_tiburon.y - 50 == this.posicion_pez.y && tiburon2.posicion_tiburon.z - 50 == this.posicion_pez.z)) {
+      velocidad_pez.x += constante_huir * velocidad_pez.x;
+      velocidad_pez.y += constante_huir * velocidad_pez.y;
+      velocidad_pez.z += constante_huir * velocidad_pez.z;
+    }
   }
 
   void pinta_peces() {

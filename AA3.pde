@@ -15,7 +15,7 @@ float incremento_tiempo = 0.1;
 
 PVector destinoPeces;
 peces pezLider;
-peces[] pezAmarillo = new peces[14];
+peces[] pezRojo = new peces[14];
 peces[] pezAzul = new peces[14];
 peces[] pezVerde = new peces[7];
 peces[] pezNemo = new peces[7];
@@ -40,19 +40,19 @@ void setup() {
 
   destinoPeces = new PVector (width / 2.0, height / 2.0, -500.0);
 
-  pezLider = new peces(true, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 1.0, 0.0, 0.08, color(#ffc340));
+  pezLider = new peces(true, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 2.0, 1.0, 0.0, 0.08, color(#ffc340));
 
-  for (int counter = 0; counter < pezAmarillo.length; counter ++) {
-    pezAmarillo[counter] = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, random(0.0, 0.4), random(0.5, 1.0), random(0.01, 0.1), color(#ffc340));
+  for (int counter = 0; counter < pezRojo.length; counter ++) {
+    pezRojo[counter] = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 2.0, random(0.0, 0.4), random(0.5, 1.0), random(0.01, 0.1), color(#c20000));
   }
   for (int counter = 0; counter < pezAzul.length; counter ++) {
-    pezAzul[counter] = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, random(0.0, 0.4), random(0.5, 1.0), random(0.01, 0.1), color(#8fe3ff));
+    pezAzul[counter] = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 2.0, random(0.0, 0.4), random(0.5, 1.0), random(0.01, 0.1), color(#8fe3ff));
   }
   for (int counter = 0; counter < pezVerde.length; counter ++) {
-    pezVerde[counter] = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, random(0.0, 0.4), random(0.5, 1.0), random(0.01, 0.1), color(#92e27a));
+    pezVerde[counter] = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 2.0, random(0.0, 0.4), random(0.5, 1.0), random(0.01, 0.1), color(#92e27a));
   }
   for (int counter = 0; counter < pezNemo.length; counter ++) {
-    pezNemo[counter] = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, random(0.0, 0.4), random(0.5, 1.0), random(0.01, 0.1), color(#ffa500));
+    pezNemo[counter] = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 2.0, random(0.0, 0.4), random(0.5, 1.0), random(0.01, 0.1), color(#ffa500));
   }
 
 
@@ -87,7 +87,7 @@ void draw() {
   pezLider.pinta_peces();
 
 
-  for (peces pez : pezAmarillo) {
+  for (peces pez : pezRojo) {
     pez.calcular_pez();
     pez.pinta_peces();
   }
