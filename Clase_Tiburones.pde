@@ -46,6 +46,7 @@ class tiburon {
     acumulador_fuerza = new PVector (0.0, 0.0, 0.0);
     vector_usable = new PVector (0.0, 0.0, 0.0);
 
+    objetivoTiburones = new PVector (pezLider.posicion_pez.x, pezLider.posicion_pez.y, pezLider.posicion_pez.z);
 
     vector_usable.x = objetivoTiburones.x - posicion_tiburon.x;
     vector_usable.y = objetivoTiburones.y - posicion_tiburon.y;
