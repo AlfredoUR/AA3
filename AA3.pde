@@ -11,11 +11,14 @@ EstadoPantalla estadoActual = EstadoPantalla.PANTALLA;
 //PImage arena;
 //PShape suelo;
 
-float incremento_tiempo = 0.065;
+float incremento_tiempo = 0.1;
 
 PVector destinoPeces;
 peces pezLider;
-peces[] pez = new peces[45];
+peces[] pezAmarillo = new peces[14];
+peces[] pezAzul = new peces[14];
+peces[] pezVerde = new peces[7];
+peces[] pezNemo = new peces[7];
 
 
 PVector objetivoTiburones;
@@ -39,9 +42,19 @@ void setup() {
 
   pezLider = new peces(true, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 1.0, 0.0, 0.08, color(#ffc340));
 
-  for (int counter = 0; counter < pez.length; counter ++) {
-    pez[counter] = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, random(0.0, 0.4), random(0.5, 1.0), random(0.01, 0.1), color(#ffc340));
+  for (int counter = 0; counter < pezAmarillo.length; counter ++) {
+    pezAmarillo[counter] = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, random(0.0, 0.4), random(0.5, 1.0), random(0.01, 0.1), color(#ffc340));
   }
+  for (int counter = 0; counter < pezAzul.length; counter ++) {
+    pezAzul[counter] = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, random(0.0, 0.4), random(0.5, 1.0), random(0.01, 0.1), color(#8fe3ff));
+  }
+  for (int counter = 0; counter < pezVerde.length; counter ++) {
+    pezVerde[counter] = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, random(0.0, 0.4), random(0.5, 1.0), random(0.01, 0.1), color(#92e27a));
+  }
+  for (int counter = 0; counter < pezNemo.length; counter ++) {
+    pezNemo[counter] = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, random(0.0, 0.4), random(0.5, 1.0), random(0.01, 0.1), color(#ffa500));
+  }
+
 
   objetivoTiburones = new PVector (pezLider.posicion_pez.x, pezLider.posicion_pez.y, pezLider.posicion_pez.z);
 
@@ -74,7 +87,19 @@ void draw() {
   pezLider.pinta_peces();
 
 
-  for (peces pez : pez) {
+  for (peces pez : pezAmarillo) {
+    pez.calcular_pez();
+    pez.pinta_peces();
+  }
+  for (peces pez : pezAzul) {
+    pez.calcular_pez();
+    pez.pinta_peces();
+  }
+  for (peces pez : pezVerde) {
+    pez.calcular_pez();
+    pez.pinta_peces();
+  }
+  for (peces pez : pezNemo) {
     pez.calcular_pez();
     pez.pinta_peces();
   }
