@@ -19,6 +19,8 @@ peces pez1;
 peces pez2;
 peces pez3;
 peces pez4;
+peces pez5;
+peces pez6;
 
 // Setup
 void setup() {
@@ -37,6 +39,8 @@ void setup() {
   pez2 = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 0.2, 0.8, 0.02, color(255, 0, 0));
   pez3 = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 0.7, 0.3, 0.06, color(255, 0, 0));
   pez4 = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 0.4, 0.6, 0.05, color(255, 0, 0));
+  pez5 = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 0.9, 0.1, 0.08, color(255, 0, 0));
+  pez6 = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 0.3, 0.7, 0.04, color(255, 0, 0));
 }
 
 // Draw
@@ -71,12 +75,16 @@ void draw() {
   pez2.calcular_pez();
   pez3.calcular_pez();
   pez4.calcular_pez();
+  pez5.calcular_pez();
+  pez6.calcular_pez();
 
   pezLider.pinta_peces();
   pez1.pinta_peces();
   pez2.pinta_peces();
   pez3.pinta_peces();
   pez4.pinta_peces();
+  pez5.pinta_peces();
+  pez6.pinta_peces();
 }
 
 // Eventos
