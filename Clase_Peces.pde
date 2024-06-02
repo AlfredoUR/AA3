@@ -105,11 +105,13 @@ class peces {
   }
 
   void pinta_peces() {
-    translate(posicion_pez.x, posicion_pez.y, posicion_pez.z);
+    pushMatrix();
+    translate(this.posicion_pez.x, this.posicion_pez.y, this.posicion_pez.z);
     fill(color_pez);
-    sphereDetail(100);
+    sphereDetail(100);  
     noStroke();
     lights();
     sphere(tamanyo_pez);
+    popMatrix();
   }
 }
