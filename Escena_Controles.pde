@@ -2,13 +2,13 @@
 
 void escenaControles() {
   pushMatrix();
-  translate(0.0, 0.0, 125);
+  translate(127.75, 74.0, 125);
   strokeWeight(2.5);
   stroke(125);
   stroke(225);
   line(2.5, 2.5, 400.0, 2.5);
-  line(400.0, 2.5, 400.0, height - 50.0);
-  line(2.5, height - 50.0, 2.5, 2.5);
+  line(400.0, 2.5, 400.0, height - 189.0);
+  line(2.5, height - 189.0, 2.5, 2.5);
   String textUno = "Mantén pulsado '+' para aumentar la fuerza de fricción de las distintas entidades.";
   fill(200);
   textSize(22.5);

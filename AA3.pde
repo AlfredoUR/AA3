@@ -62,9 +62,9 @@ void setup() {
 
   objetivoTiburones = new PVector (pezLider.posicion_pez.x, pezLider.posicion_pez.y, pezLider.posicion_pez.z);
 
-  tiburonLider = new tiburon(true, new PVector(random(width, width + 100.0), random(0.0, height), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 6.0, 25.0, 1.0, 0.0, 0.02, color(#666666));
-  tiburon1 = new tiburon(false, new PVector(random(0.0, width), random(0.0, -100.0), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 6.0, 25.0, 0.8, 0.2, 0.02, color(#666666));
-  tiburon2 = new tiburon(false, new PVector(random(0.0, -100.0), random(0.0, height), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 6.0, 25.0, 0.9, 0.1, 0.03, color(#666666));
+  tiburonLider = new tiburon(true, new PVector(random(width, width + 100.0), random(0.0, height), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 6.0, 20.0, 1.0, 0.0, 0.02, color(#666666));
+  tiburon1 = new tiburon(false, new PVector(random(0.0, width), random(0.0, -100.0), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 6.0, 20.0, 0.8, 0.2, 0.02, color(#666666));
+  tiburon2 = new tiburon(false, new PVector(random(0.0, -100.0), random(0.0, height), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 6.0, 20.0, 0.9, 0.1, 0.03, color(#666666));
 }
 
 // Draw
