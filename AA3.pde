@@ -1,6 +1,13 @@
 // Alfredo Ugarte y Pol Blesa
 // AA3 --> Banco de peces y tres tiburones que los persiguen
 
+// IMPORT'S
+import camera3D.Camera3D; // Importamos la librería Camera 3D
+
+// ZONA OBJETOS Y VARIABLES
+Camera3D estereoscopia; // Objeto de Camera 3D para el efecto estereo
+boolean tresD;
+
 // Cuatro escenas:
 // PANTALLA --> escena principal
 // CONTROLES --> se abre manteniendo pulsado "TAB", para ver los distintos usos de los controles
@@ -42,6 +49,14 @@ void setup() {
   fullScreen(P3D);
   // Quitamos el cursor
   noCursor();
+
+  // Funcions per a activar estereoscopía
+  tresD = false;
+  if (tresD == true) {
+    estereoscopia = new Camera3D(this); // Cridar al constructor
+    estereoscopia.setBackgroundColor(color(255)); // Color de fons farem blanc
+    estereoscopia.renderDefaultAnaglyph().setDivergence(1); // Valor per defecte
+  }
 
   // Pantalla del menu principal
   estadoActual = EstadoPantalla.PANTALLA;
@@ -196,6 +211,9 @@ void keyPressed() {
   case '6': // Disminuye -150 la coordenada Z del destino
     destinoPeces.z -= 100.0;
     break;
+  case '8':
+    tresD = true;
+    break;
   case '0':
     estadoActual = EstadoPantalla.ISOMETRICA;
     break;
@@ -274,6 +292,9 @@ void keyReleased() {
     tiburonLider.constante_friccion += 0;
     tiburon1.constante_friccion += 0;
     tiburon2.constante_friccion += 0;
+  }
+  if (keyCode == '8') {
+    tresD = false;
   }
 
   // Dejar de mantener para la visualización de los controles
