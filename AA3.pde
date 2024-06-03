@@ -46,7 +46,10 @@ void setup() {
 
 
   // Obstáculos
-  obstaculo1 = new obstaculos(new PVector(-10.0, -10.0, -10.0), new PVector(width / 5.0, 200.0, 0.0), 150.0, 150.0, 150.0, color(0));
+  obstaculo1 = new obstaculos(new PVector(-100.0, -100.0, -100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(100.0, -100.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo2 = new obstaculos(new PVector(100.0, 100.0, 100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(100.0, -100.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo3 = new obstaculos(new PVector(-100.0, 100.0, 100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(100.0, -100.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo4 = new obstaculos(new PVector(100.0, -100.0, -100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(100.0, -100.0)), 100.0, 100.0, 100.0, color(0));
 
 
   // Peces
@@ -130,6 +133,9 @@ void draw() {
 
   //Pintar los obstáculos
   obstaculo1.pinta_obstaculo();
+  obstaculo2.pinta_obstaculo();
+  obstaculo3.pinta_obstaculo();
+  obstaculo4.pinta_obstaculo();
 
   // Estado de la pantalla
   switch(estadoActual) {
@@ -169,7 +175,7 @@ void keyPressed() {
 }
 
 // Dejar de mantener pulsado los botones para dejar de hacer una acción
-void keyReleased() { 
+void keyReleased() {
   // Dejar de mantener para las acciones de ampliación y disminución de las coordenadas del destino
   if (key == '1' || key == '2' || key == '3' || key == '4' || key == '5' || key == '6') {
     destinoPeces.x += 0.0;
