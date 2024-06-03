@@ -4,10 +4,6 @@
 // IMPORT'S
 import camera3D.Camera3D; // Importamos la librería Camera 3D
 
-// ZONA OBJETOS Y VARIABLES
-Camera3D estereoscopia; // Objeto de Camera 3D para el efecto estereo
-boolean tresD;
-
 // Cuatro escenas:
 // PANTALLA --> escena principal
 // CONTROLES --> se abre manteniendo pulsado "TAB", para ver los distintos usos de los controles
@@ -20,7 +16,10 @@ enum EstadoPantalla {
 // Estado de la pantalla
 EstadoPantalla estadoActual = EstadoPantalla.PANTALLA;
 
-// Variables
+// Variables y objetos
+Camera3D estereoscopia; // Objeto de Camera 3D para el efecto estereo
+boolean tresD;
+
 float incremento_tiempo = 0.1; // Incremento del tiempo
 
 // Peces
@@ -50,22 +49,22 @@ void setup() {
   // Quitamos el cursor
   noCursor();
 
-  // Funcions per a activar estereoscopía
+  // Funciones para activar estereoscopía
   tresD = false;
   if (tresD == true) {
-    estereoscopia = new Camera3D(this); // Cridar al constructor
-    estereoscopia.setBackgroundColor(color(255)); // Color de fons farem blanc
-    estereoscopia.renderDefaultAnaglyph().setDivergence(1); // Valor per defecte
+    estereoscopia = new Camera3D(this); // Llamar al constructor
+    estereoscopia.setBackgroundColor(color(255)); // Color de fondo
+    estereoscopia.renderDefaultAnaglyph().setDivergence(1); // Valor por defecto
   }
 
   // Pantalla del menu principal
   estadoActual = EstadoPantalla.PANTALLA;
 
   // Obstáculos
-  obstaculo1 = new obstaculos(new PVector(-100.0, -100.0, -100.0), new PVector(random(150.0, width - 150), random(150.0, height / 1.75), random(0.0, -750.0)), 100.0, 100.0, 100.0, color(0));
-  obstaculo2 = new obstaculos(new PVector(100.0, 100.0, 100.0), new PVector(random(150.0, width - 150), random(150.0, height / 1.75), random(0.0, -750.0)), 100.0, 100.0, 100.0, color(0));
-  obstaculo3 = new obstaculos(new PVector(-100.0, 100.0, 100.0), new PVector(random(150.0, width - 150), random(150.0, height / 1.75), random(0.0, -750.0)), 100.0, 100.0, 100.0, color(0));
-  obstaculo4 = new obstaculos(new PVector(100.0, -100.0, -100.0), new PVector(random(150.0, width - 150), random(150.0, height / 1.75), random(0.0, -750.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo1 = new obstaculos(new PVector(-100.0, -100.0, -100.0), new PVector(random(150.0, width - 150), random(150.0, height / 1.75), random(-750.0, 0.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo2 = new obstaculos(new PVector(100.0, 100.0, 100.0), new PVector(random(150.0, width - 150), random(150.0, height / 1.75), random(-750.0, 0.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo3 = new obstaculos(new PVector(-100.0, 100.0, 100.0), new PVector(random(150.0, width - 150), random(150.0, height / 1.75), random(-750.0, 0.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo4 = new obstaculos(new PVector(100.0, -100.0, -100.0), new PVector(random(150.0, width - 150), random(150.0, height / 1.75), random(-750.0, 0.0)), 100.0, 100.0, 100.0, color(0));
 
 
   // Peces
@@ -179,7 +178,7 @@ void draw() {
   obstaculo3.pinta_obstaculo();
   obstaculo4.pinta_obstaculo();
 
-
+  // Pintar destino como una caja blanca
   pushMatrix();
   translate(destinoPeces.x, destinoPeces.y, destinoPeces.z);
   fill(255);
@@ -211,16 +210,16 @@ void keyPressed() {
   case '6': // Disminuye -150 la coordenada Z del destino
     destinoPeces.z -= 100.0;
     break;
-  case '8':
+  case '8': // Activar la libreria Camera3D
     tresD = true;
     break;
-  case '0':
+  case '0': // Escena isométrica
     estadoActual = EstadoPantalla.ISOMETRICA;
     break;
-  case '9':
+  case '9': // Escena ortográfica superior
     estadoActual = EstadoPantalla.SUPERIOR;
     break;
-  case '+':
+  case '+': // Aumentar la constante de friccion de las entidades
     pezLider.constante_friccion++;
 
     for (int counter = 0; counter < pezRojo.length; counter ++) {
@@ -240,7 +239,7 @@ void keyPressed() {
     tiburon1.constante_friccion++;
     tiburon2.constante_friccion++;
     break;
-  case '-':
+  case '-': // Disminuir la constante de friccion de las entidades
     pezLider.constante_friccion--;
 
     for (int counter = 0; counter < pezRojo.length; counter ++) {
