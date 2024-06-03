@@ -46,10 +46,10 @@ void setup() {
 
 
   // Obstáculos
-  obstaculo1 = new obstaculos(new PVector(-100.0, -100.0, -100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(100.0, -100.0)), 100.0, 100.0, 100.0, color(0));
-  obstaculo2 = new obstaculos(new PVector(100.0, 100.0, 100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(100.0, -100.0)), 100.0, 100.0, 100.0, color(0));
-  obstaculo3 = new obstaculos(new PVector(-100.0, 100.0, 100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(100.0, -100.0)), 100.0, 100.0, 100.0, color(0));
-  obstaculo4 = new obstaculos(new PVector(100.0, -100.0, -100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(100.0, -100.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo1 = new obstaculos(new PVector(-100.0, -100.0, -100.0), new PVector(random(0.0, width), random(100.0, height / 1.75), random(100.0, -350.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo2 = new obstaculos(new PVector(100.0, 100.0, 100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(100.0, -350.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo3 = new obstaculos(new PVector(-100.0, 100.0, 100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(100.0, -350.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo4 = new obstaculos(new PVector(100.0, -100.0, -100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(100.0, -350.0)), 100.0, 100.0, 100.0, color(0));
 
 
   // Peces
@@ -81,6 +81,7 @@ void setup() {
 
 // Draw
 void draw() {
+
   // Color azul marino para el fondo
   background(#2d2c55);
 

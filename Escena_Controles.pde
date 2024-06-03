@@ -1,6 +1,24 @@
 // Controles
 
 void escenaControles() {
+
+  pushMatrix();
+  // Posicionamiento de los ejes
+  translate(width / 2.0, height / 2.0, 0.0);
+
+  // Grueso ejes
+  strokeWeight(1.0);
+  // Eje X
+  stroke(255);
+  line(0.0, 0.0, 0.0, 200.0, 0.0, 0.0);
+  // Eje Y
+  stroke(255);
+  line(0.0, 0.0, 0.0, 0.0, 200.0, 0.0);
+  // Eje Z
+  stroke(255);
+  line(0.0, 0.0, 0.0, 0.0, 0.0, 200.0);
+  popMatrix();
+
   pushMatrix();
   translate(127.75, 74.0, 125); // Posición de la pantalla de controles
   strokeWeight(2.5);
