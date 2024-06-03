@@ -23,7 +23,7 @@ peces[] pezVerde = new peces[7]; // Array de peces (color verde)
 peces[] pezNemo = new peces[7]; // Array de peces (color naranja)
 
 // Tiburones
-PVector objetivoTiburones; // Destino y/o Objetivo de los tiburones
+PVector objetivoTiburones; // Destino y objetivo de los tiburones
 tiburon tiburonLider; // Tiburón Líder (color gris)
 tiburon tiburon1; // Tiburón Uno (color gris)
 tiburon tiburon2; // Tiburón Dos (color gris)

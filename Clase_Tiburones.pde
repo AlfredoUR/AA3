@@ -1,34 +1,38 @@
 // Clase de los tiburones para la caza de los peces
 
 class tiburon {
+
   // Atributos
-  PVector posicion_tiburon;
-  PVector velocidad_tiburon;
-  PVector aceleracion_tiburon;
+  // Vectores
+  PVector posicion_tiburon; // Posición de los tiburones
+  PVector velocidad_tiburon; // Velocidad de los tiburones
+  PVector aceleracion_tiburon; // Aceleración de los tiburones
 
-  color color_tiburon;
+  color color_tiburon; // Color de los tiburones
 
-  float masa_tiburon;
-  float tamanyo_tiburon;
+  float masa_tiburon; // Masa de los peces
+  float tamanyo_tiburon; // Tamaño de los peces
 
-  boolean lider;
+  boolean lider; // Booleano para saber si ese tiburón es el líder o no
 
-  float constante_objetivo;
-  float constante_lider;
-  float constante_friccion;
+  // Constantes
+  float constante_objetivo; // Constante del objetivo
+  float constante_lider; // Constante del líder
+  float constante_friccion; // Constante de fricción
+  
 
   // Constructor
   tiburon(boolean leader, PVector posicion, PVector velocidad, float masa, float tamanyo, float const_objetivo, float const_leader, float const_friccion, color c) {
-    posicion_tiburon = new PVector (0.0, 0.0, 0.0);
-    velocidad_tiburon = new PVector (0.0, 0.0, 0.0);
-    aceleracion_tiburon = new PVector (0.0, 0.0, 0.0);
+    posicion_tiburon = new PVector (0.0, 0.0, 0.0); // Posición de los tiburones
+    velocidad_tiburon = new PVector (0.0, 0.0, 0.0); // Velocidad de los tiburones
+    aceleracion_tiburon = new PVector (0.0, 0.0, 0.0); // Aceleración de los tiburones
 
-    posicion_tiburon.set(posicion);
-    velocidad_tiburon.set(velocidad);
+    posicion_tiburon.set(posicion); // posición
+    velocidad_tiburon.set(velocidad); // Velocidad
 
-    color_tiburon = c;
+    color_tiburon = c; // Color de los tiburones
 
-    masa_tiburon = masa;
+    masa_tiburon = masa; // Masa del tiburón
     tamanyo_tiburon = tamanyo;
 
     constante_objetivo = const_objetivo;
