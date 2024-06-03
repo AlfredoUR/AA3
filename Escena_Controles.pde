@@ -15,7 +15,7 @@ void escenaControles() {
   text(textUno, 35, 35, 330, height - 85);
   String textDos = "Mantén pulsado '-' para disminuir la fuerza de fricción de las distintas entidades.";
   text(textDos, 35, 150 + 35, 330, height - 85);
-  String textTres = "Para cambiar el destino general de las entidades, mantén pulsado '1' (acercar) o '2' (alejar).";
+  String textTres = "Para cambiar el destino general de las entidades, mantén pulsado '1' (+X), '2' (+Y), '3' (+Z), '4' (-X), '5' (-Y) o '6' (-Z).";
   text(textTres, 35, 300 + 35, 330, height - 85);
   popMatrix();
 }

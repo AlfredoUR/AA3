@@ -1,6 +1,8 @@
 // Clase de obstáculos (voxels)
 
 class obstaculos {
+  
+  // Atributos 
   PVector fuerza_obstaculo;
   PVector posicion_obstaculo;
 

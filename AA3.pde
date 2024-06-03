@@ -46,7 +46,7 @@ void setup() {
 
 
   // Obstáculos
-  obstaculo1 = new obstaculos(new PVector(-10.0, -10.0, -10.0), new PVector(width / 5.0, 200.0, 0.0), 150.0, 150.0, 150.0, color(200));
+  obstaculo1 = new obstaculos(new PVector(-10.0, -10.0, -10.0), new PVector(width / 5.0, 200.0, 0.0), 150.0, 150.0, 150.0, color(0));
 
 
   // Peces
@@ -145,28 +145,38 @@ void draw() {
 // Mantener pulsado los botones para hacer una acción
 void keyPressed() {
   switch (keyCode) {
-  case '1':
+  case '1': // Amplía +150 la coordenada X del destino
     destinoPeces.x += 150.0;
+    break;
+  case '2': // Amplía +150 la coordenada Y del destino
     destinoPeces.y += 150.0;
+    break;
+  case '3': // Amplía +150 la coordenada Z del destino
     destinoPeces.z += 150.0;
     break;
-  case '2':
+  case '4': // Disminuye -150 la coordenada X del destino
     destinoPeces.x -= 150.0;
+    break;
+  case '5': // Disminuye -150 la coordenada Y del destino
     destinoPeces.y -= 150.0;
+    break;
+  case '6': // Disminuye -150 la coordenada Z del destino
     destinoPeces.z -= 150.0;
     break;
-  case TAB:
+  case TAB: // Mantener para ver los controles
     estadoActual = EstadoPantalla.CONTROLES;
   }
 }
 
 // Dejar de mantener pulsado los botones para dejar de hacer una acción
-void keyReleased() {
-  if (key == '1' || key == '2') {
+void keyReleased() { 
+  // Dejar de mantener para las acciones de ampliación y disminución de las coordenadas del destino
+  if (key == '1' || key == '2' || key == '3' || key == '4' || key == '5' || key == '6') {
     destinoPeces.x += 0.0;
     destinoPeces.y += 0.0;
     destinoPeces.z += 0.0;
   }
+  // Dejar de mantener para la visualización de los controles
   if (keyCode == TAB) {
     estadoActual = EstadoPantalla.PANTALLA;
   }
