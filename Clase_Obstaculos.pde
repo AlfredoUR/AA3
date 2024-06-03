@@ -1,4 +1,4 @@
-
+// Clase de obstáculos (voxels)
 
 class obstaculos {
   PVector fuerza_obstaculo;

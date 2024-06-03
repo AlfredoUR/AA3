@@ -1,33 +1,38 @@
 // Alfredo Ugarte y Pol Blesa
-// AA3 --> Banco de peces
+// AA3 --> Banco de peces y tres tiburones que los persiguen
 
+// Dos escenas:
+// PANTALLA --> escena principal
+// CONTROLES --> se abre manteniendo pulsado "TAB", para ver los distintos usos de los controles
 enum EstadoPantalla {
   PANTALLA, CONTROLES
 }
 
+// Estado de la pantalla
 EstadoPantalla estadoActual = EstadoPantalla.PANTALLA;
 
 // Variables
-//PImage arena;
-//PShape suelo;
+float incremento_tiempo = 0.1; // Incremento del tiempo
 
-float incremento_tiempo = 0.1;
+// Peces
+PVector destinoPeces; // Destino de los peces
+peces pezLider; // Pez Líder (color amarillo)
+peces[] pezRojo = new peces[14]; // Array de peces (color rojo)
+peces[] pezAzul = new peces[14]; // Array de peces (color azul)
+peces[] pezVerde = new peces[7]; // Array de peces (color verde)
+peces[] pezNemo = new peces[7]; // Array de peces (color naranja)
 
-PVector destinoPeces;
-peces pezLider;
-peces[] pezRojo = new peces[14];
-peces[] pezAzul = new peces[14];
-peces[] pezVerde = new peces[7];
-peces[] pezNemo = new peces[7];
+// Tiburones
+PVector objetivoTiburones; // Destino y/o Objetivo de los tiburones
+tiburon tiburonLider; // Tiburón Líder (color gris)
+tiburon tiburon1; // Tiburón Uno (color gris)
+tiburon tiburon2; // Tiburón Dos (color gris)
 
-
-PVector objetivoTiburones;
-tiburon tiburonLider;
-tiburon tiburon1;
-tiburon tiburon2;
-
-
+// Obstáculos
 obstaculos obstaculo1;
+obstaculos obstaculo2;
+obstaculos obstaculo3;
+obstaculos obstaculo4;
 
 // Setup
 void setup() {
@@ -39,9 +44,12 @@ void setup() {
   // Pantalla del menu principal
   estadoActual = EstadoPantalla.PANTALLA;
 
+
+  // Obstáculos
   obstaculo1 = new obstaculos(new PVector(-10.0, -10.0, -10.0), new PVector(width / 5.0, 200.0, 0.0), 150.0, 150.0, 150.0, color(200));
 
 
+  // Peces
   destinoPeces = new PVector (width / 2.0, height / 2.0, -500.0);
 
   pezLider = new peces(true, new PVector(width / 2.0, height / 1.25, 0.0), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 3.0, 1.0, 0.0, 0.08, color(#ffc340));
@@ -60,6 +68,7 @@ void setup() {
   }
 
 
+  // Tiburones
   objetivoTiburones = new PVector (pezLider.posicion_pez.x, pezLider.posicion_pez.y, pezLider.posicion_pez.z);
 
   tiburonLider = new tiburon(true, new PVector(random(width, width + 100.0), random(0.0, height), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 5.0, 20.0, 1.0, 0.0, 0.02, color(#a7a7a7));
@@ -72,6 +81,7 @@ void draw() {
   // Color azul marino para el fondo
   background(#2d2c55);
 
+  // Caja de texto informativo
   pushMatrix();
   stroke(225);
   strokeWeight(2.5);
@@ -86,11 +96,11 @@ void draw() {
   text(text, 0.0, height - 40.0, width, height - 40.0);
   popMatrix();
 
-
+  // Calcular y pintar el pez líder
   pezLider.calcular_pez();
   pezLider.pinta_peces();
 
-
+  // Calcular y pintar los demás peces
   for (peces pez : pezRojo) {
     pez.calcular_pez();
     pez.pinta_peces();
@@ -108,17 +118,20 @@ void draw() {
     pez.pinta_peces();
   }
 
-
+  // Calcular los tiburones
   tiburonLider.calcula_tiburon();
   tiburon1.calcula_tiburon();
   tiburon2.calcula_tiburon();
 
+  // Pintar los tiburones
   tiburonLider.pinta_tiburones();
   tiburon1.pinta_tiburones();
   tiburon2.pinta_tiburones();
 
+  //Pintar los obstáculos
   obstaculo1.pinta_obstaculo();
 
+  // Estado de la pantalla
   switch(estadoActual) {
   case PANTALLA:
     break;
@@ -129,6 +142,7 @@ void draw() {
 }
 
 // Eventos
+// Mantener pulsado los botones para hacer una acción
 void keyPressed() {
   switch (keyCode) {
   case '1':
@@ -146,6 +160,7 @@ void keyPressed() {
   }
 }
 
+// Dejar de mantener pulsado los botones para dejar de hacer una acción
 void keyReleased() {
   if (key == '1' || key == '2') {
     destinoPeces.x += 0.0;
