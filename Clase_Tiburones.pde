@@ -85,6 +85,28 @@ class tiburon {
       acumulador_fuerza.y += vector_usable.y;
       acumulador_fuerza.z += vector_usable.z;
     }
+    // -------------------------------------------------------------------------------
+    PVector min_obstaculo = new PVector(0.0, 0.0, 0.0);
+    PVector max_obstaculo = new PVector(0.0, 0.0, 0.0);
+
+    min_obstaculo.x = obstaculo1.posicion_obstaculo.x - 0.5 * obstaculo1.anchura_obstaculo;
+    min_obstaculo.y = obstaculo1.posicion_obstaculo.y - 0.5 * obstaculo1.altura_obstaculo;
+    min_obstaculo.z = obstaculo1.posicion_obstaculo.z - 0.5 * obstaculo1.profundidad_obstaculo;
+
+    max_obstaculo.x = obstaculo1.posicion_obstaculo.x + 0.5 * obstaculo1.anchura_obstaculo;
+    max_obstaculo.y = obstaculo1.posicion_obstaculo.y + 0.5 * obstaculo1.altura_obstaculo;
+    max_obstaculo.z = obstaculo1.posicion_obstaculo.z + 0.5 * obstaculo1.profundidad_obstaculo;
+
+    if ((posicion_tiburon.x > min_obstaculo.x) && (posicion_tiburon.x < max_obstaculo.x)
+      && (posicion_tiburon.y > min_obstaculo.y) && (posicion_tiburon.y < max_obstaculo.y)
+      && (posicion_tiburon.z > min_obstaculo.z) && (posicion_tiburon.z < max_obstaculo.z)) {
+      // Som dins del voxel
+      acumulador_fuerza.x += obstaculo1.fuerza_obstaculo.x;
+      acumulador_fuerza.y += obstaculo1.fuerza_obstaculo.y;
+      acumulador_fuerza.z += obstaculo1.fuerza_obstaculo.z;
+    }
+
+    // -------------------------------------------------------------------------------
 
     acumulador_fuerza.x += -1.0 * constante_friccion * velocidad_tiburon.x;
     acumulador_fuerza.y += -1.0 * constante_friccion * velocidad_tiburon.y;

@@ -39,31 +39,32 @@ void setup() {
   // Pantalla del menu principal
   estadoActual = EstadoPantalla.PANTALLA;
 
-  obstaculo1 = new obstaculos(new PVector(0.0, 1.0, 1.0), new PVector(width - 500.0, height - 200.0, 50.0), 100.0, 150.0, 200.0, color(255));
+  obstaculo1 = new obstaculos(new PVector(-10.0, -10.0, -10.0), new PVector(width / 5.0, 200.0, 0.0), 150.0, 150.0, 150.0, color(200));
+
 
   destinoPeces = new PVector (width / 2.0, height / 2.0, -500.0);
 
-  pezLider = new peces(true, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 2.0, 1.0, 0.0, 0.08, color(#ffc340));
+  pezLider = new peces(true, new PVector(width / 2.0, height / 1.25, 0.0), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 3.0, 1.0, 0.0, 0.08, color(#ffc340));
 
   for (int counter = 0; counter < pezRojo.length; counter ++) {
-    pezRojo[counter] = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 2.0, random(0.0, 0.4), random(0.5, 1.0), random(0.01, 0.1), color(#c20000));
+    pezRojo[counter] = new peces(false, new PVector(random(0.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 3.0, random(0.0, 0.7), random(0.4, 1.0), random(0.01, 0.1), color(#c20000));
   }
   for (int counter = 0; counter < pezAzul.length; counter ++) {
-    pezAzul[counter] = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 2.0, random(0.0, 0.4), random(0.5, 1.0), random(0.01, 0.1), color(#8fe3ff));
+    pezAzul[counter] = new peces(false, new PVector(random(0.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 3.0, random(0.0, 0.7), random(0.4, 1.0), random(0.01, 0.1), color(#8fe3ff));
   }
   for (int counter = 0; counter < pezVerde.length; counter ++) {
-    pezVerde[counter] = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 2.0, random(0.0, 0.4), random(0.5, 1.0), random(0.01, 0.1), color(#92e27a));
+    pezVerde[counter] = new peces(false, new PVector(random(0.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 3.0, random(0.0, 0.7), random(0.4, 1.0), random(0.01, 0.1), color(#92e27a));
   }
   for (int counter = 0; counter < pezNemo.length; counter ++) {
-    pezNemo[counter] = new peces(false, new PVector(random(3 * width / 4.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 2.0, random(0.0, 0.4), random(0.5, 1.0), random(0.01, 0.1), color(#ffa500));
+    pezNemo[counter] = new peces(false, new PVector(random(0.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 3.0, random(0.0, 0.7), random(0.4, 1.0), random(0.01, 0.1), color(#ffa500));
   }
 
 
   objetivoTiburones = new PVector (pezLider.posicion_pez.x, pezLider.posicion_pez.y, pezLider.posicion_pez.z);
 
-  tiburonLider = new tiburon(true, new PVector(random(width, width + 100.0), random(0.0, height), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 6.0, 20.0, 1.0, 0.0, 0.02, color(#a7a7a7));
-  tiburon1 = new tiburon(false, new PVector(random(0.0, width), random(0.0, -100.0), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 6.0, 20.0, 0.8, 0.2, 0.02, color(#a7a7a7));
-  tiburon2 = new tiburon(false, new PVector(random(0.0, -100.0), random(0.0, height), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 6.0, 20.0, 0.9, 0.1, 0.03, color(#a7a7a7));
+  tiburonLider = new tiburon(true, new PVector(random(width, width + 100.0), random(0.0, height), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 5.0, 20.0, 1.0, 0.0, 0.02, color(#a7a7a7));
+  tiburon1 = new tiburon(false, new PVector(random(0.0, width), random(0.0, -100.0), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 5.0, 20.0, 0.8, 0.2, 0.02, color(#a7a7a7));
+  tiburon2 = new tiburon(false, new PVector(random(0.0, -100.0), random(0.0, height), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 5.0, 20.0, 0.9, 0.1, 0.03, color(#a7a7a7));
 }
 
 // Draw
@@ -115,7 +116,7 @@ void draw() {
   tiburonLider.pinta_tiburones();
   tiburon1.pinta_tiburones();
   tiburon2.pinta_tiburones();
-  
+
   obstaculo1.pinta_obstaculo();
 
   switch(estadoActual) {

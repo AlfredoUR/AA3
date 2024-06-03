@@ -26,9 +26,9 @@ class obstaculos {
   void pinta_obstaculo() {
     pushMatrix();
     translate(this.posicion_obstaculo.x, this.posicion_obstaculo.y, this.posicion_obstaculo.z);
-    fill(color_obstaculo);
-    sphereDetail(100);
-    noStroke();
+    noFill();
+    strokeWeight(2.5);
+    stroke(color_obstaculo);
     lights();
     box(anchura_obstaculo, altura_obstaculo, profundidad_obstaculo);
     popMatrix();
