@@ -2,7 +2,7 @@
 
 void escenaControles() {
   pushMatrix();
-  translate(127.75, 74.0, 125);
+  translate(127.75, 74.0, 125); // Posición de la pantalla de controles
   strokeWeight(2.5);
   stroke(125);
   stroke(225);
