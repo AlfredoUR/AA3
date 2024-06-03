@@ -47,10 +47,10 @@ void setup() {
   estadoActual = EstadoPantalla.PANTALLA;
 
   // Obstáculos
-  obstaculo1 = new obstaculos(new PVector(-100.0, -100.0, -100.0), new PVector(random(0.0, width), random(100.0, height / 1.75), random(50.0, -350.0)), 100.0, 100.0, 100.0, color(0));
-  obstaculo2 = new obstaculos(new PVector(100.0, 100.0, 100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(50.0, -350.0)), 100.0, 100.0, 100.0, color(0));
-  obstaculo3 = new obstaculos(new PVector(-100.0, 100.0, 100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(50.0, -350.0)), 100.0, 100.0, 100.0, color(0));
-  obstaculo4 = new obstaculos(new PVector(100.0, -100.0, -100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(50.0, -350.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo1 = new obstaculos(new PVector(-100.0, -100.0, -100.0), new PVector(random(150.0, width - 150), random(150.0, height / 1.75), random(0.0, -750.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo2 = new obstaculos(new PVector(100.0, 100.0, 100.0), new PVector(random(150.0, width - 150), random(150.0, height / 1.75), random(0.0, -750.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo3 = new obstaculos(new PVector(-100.0, 100.0, 100.0), new PVector(random(150.0, width - 150), random(150.0, height / 1.75), random(0.0, -750.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo4 = new obstaculos(new PVector(100.0, -100.0, -100.0), new PVector(random(150.0, width - 150), random(150.0, height / 1.75), random(0.0, -750.0)), 100.0, 100.0, 100.0, color(0));
 
 
   // Peces
@@ -59,30 +59,29 @@ void setup() {
   pezLider = new peces(true, new PVector(width / 2.0, height / 1.25, 0.0), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 3.0, 1.0, 0.0, 0.08, color(#ffc340));
 
   for (int counter = 0; counter < pezRojo.length; counter ++) {
-    pezRojo[counter] = new peces(false, new PVector(random(0.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 3.0, random(0.0, 0.7), random(0.4, 1.0), random(0.01, 0.1), color(#c20000));
+    pezRojo[counter] = new peces(false, new PVector(random(0.0, width), random(3 * height / 4.0, height), random(-1000.0, 250.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 3.0, random(0.0, 0.7), random(0.4, 1.0), random(0.01, 0.1), color(#c20000));
   }
   for (int counter = 0; counter < pezAzul.length; counter ++) {
-    pezAzul[counter] = new peces(false, new PVector(random(0.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 3.0, random(0.0, 0.7), random(0.4, 1.0), random(0.01, 0.1), color(#8fe3ff));
+    pezAzul[counter] = new peces(false, new PVector(random(0.0, width), random(3 * height / 4.0, height), random(-1000.0, 250.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 3.0, random(0.0, 0.7), random(0.4, 1.0), random(0.01, 0.1), color(#8fe3ff));
   }
   for (int counter = 0; counter < pezVerde.length; counter ++) {
-    pezVerde[counter] = new peces(false, new PVector(random(0.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 3.0, random(0.0, 0.7), random(0.4, 1.0), random(0.01, 0.1), color(#92e27a));
+    pezVerde[counter] = new peces(false, new PVector(random(0.0, width), random(3 * height / 4.0, height), random(-1000.0, 250.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 3.0, random(0.0, 0.7), random(0.4, 1.0), random(0.01, 0.1), color(#92e27a));
   }
   for (int counter = 0; counter < pezNemo.length; counter ++) {
-    pezNemo[counter] = new peces(false, new PVector(random(0.0, width), random(3 * height / 4.0, height), random(100.0, -100.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 3.0, random(0.0, 0.7), random(0.4, 1.0), random(0.01, 0.1), color(#ffa500));
+    pezNemo[counter] = new peces(false, new PVector(random(0.0, width), random(3 * height / 4.0, height), random(-1000.0, 250.0)), new PVector(0.0, 0.0, 0.0), 1.0, 10.0, 3.0, random(0.0, 0.7), random(0.4, 1.0), random(0.01, 0.1), color(#ffa500));
   }
 
 
   // Tiburones
   objetivoTiburones = new PVector (pezLider.posicion_pez.x, pezLider.posicion_pez.y, pezLider.posicion_pez.z);
 
-  tiburonLider = new tiburon(true, new PVector(random(width, width + 100.0), random(0.0, height), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 5.0, 20.0, 1.0, 0.0, 0.02, color(#a7a7a7));
-  tiburon1 = new tiburon(false, new PVector(random(0.0, width), random(0.0, -100.0), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 5.0, 20.0, 0.8, 0.2, 0.02, color(#a7a7a7));
-  tiburon2 = new tiburon(false, new PVector(random(0.0, -100.0), random(0.0, height), random(50.0, -50.0)), new PVector(0.0, 0.0, 0.0), 5.0, 20.0, 0.9, 0.1, 0.03, color(#a7a7a7));
+  tiburonLider = new tiburon(true, new PVector(random(width, width + 200.0), random(0.0, height), random(-500.0, 50.0)), new PVector(0.0, 0.0, 0.0), 5.0, 20.0, 1.0, 0.0, 0.02, color(#554b4b));
+  tiburon1 = new tiburon(false, new PVector(random(0.0, width), random(0.0, -200.0), random(-500.0, 50.0)), new PVector(0.0, 0.0, 0.0), 5.0, 20.0, 0.8, 0.2, 0.02, color(#554b4b));
+  tiburon2 = new tiburon(false, new PVector(random(0.0, -200.0), random(0.0, height), random(-500.0, 50.0)), new PVector(0.0, 0.0, 0.0), 5.0, 20.0, 0.9, 0.1, 0.03, color(#554b4b));
 }
 
 // Draw
 void draw() {
-
 
   // Color azul marino para el fondo
   background(#2d2c55);
@@ -164,6 +163,15 @@ void draw() {
   obstaculo2.pinta_obstaculo();
   obstaculo3.pinta_obstaculo();
   obstaculo4.pinta_obstaculo();
+
+
+  pushMatrix();
+  translate(destinoPeces.x, destinoPeces.y, destinoPeces.z);
+  fill(255);
+  strokeWeight(0.5);
+  stroke(0);
+  box(10);
+  popMatrix();
 }
 
 // Eventos
@@ -171,28 +179,68 @@ void draw() {
 void keyPressed() {
   switch (keyCode) {
   case '1': // Amplía +150 la coordenada X del destino
-    destinoPeces.x += 150.0;
+    destinoPeces.x += 100.0;
     break;
   case '2': // Amplía +150 la coordenada Y del destino
-    destinoPeces.y += 150.0;
+    destinoPeces.y += 100.0;
     break;
   case '3': // Amplía +150 la coordenada Z del destino
-    destinoPeces.z += 150.0;
+    destinoPeces.z += 100.0;
     break;
   case '4': // Disminuye -150 la coordenada X del destino
-    destinoPeces.x -= 150.0;
+    destinoPeces.x -= 100.0;
     break;
   case '5': // Disminuye -150 la coordenada Y del destino
-    destinoPeces.y -= 150.0;
+    destinoPeces.y -= 100.0;
     break;
   case '6': // Disminuye -150 la coordenada Z del destino
-    destinoPeces.z -= 150.0;
+    destinoPeces.z -= 100.0;
     break;
   case '0':
     estadoActual = EstadoPantalla.ISOMETRICA;
     break;
   case '9':
     estadoActual = EstadoPantalla.SUPERIOR;
+    break;
+  case '+':
+    pezLider.constante_friccion++;
+
+    for (int counter = 0; counter < pezRojo.length; counter ++) {
+      pezRojo[counter].constante_friccion++;
+    }
+    for (int counter = 0; counter < pezAzul.length; counter ++) {
+      pezAzul[counter].constante_friccion++;
+    }
+    for (int counter = 0; counter < pezVerde.length; counter ++) {
+      pezVerde[counter].constante_friccion++;
+    }
+    for (int counter = 0; counter < pezNemo.length; counter ++) {
+      pezNemo[counter].constante_friccion++;
+    }
+
+    tiburonLider.constante_friccion++;
+    tiburon1.constante_friccion++;
+    tiburon2.constante_friccion++;
+    break;
+  case '-':
+    pezLider.constante_friccion--;
+
+    for (int counter = 0; counter < pezRojo.length; counter ++) {
+      pezRojo[counter].constante_friccion--;
+    }
+    for (int counter = 0; counter < pezAzul.length; counter ++) {
+      pezAzul[counter].constante_friccion--;
+    }
+    for (int counter = 0; counter < pezVerde.length; counter ++) {
+      pezVerde[counter].constante_friccion--;
+    }
+    for (int counter = 0; counter < pezNemo.length; counter ++) {
+      pezNemo[counter].constante_friccion--;
+    }
+
+    tiburonLider.constante_friccion--;
+    tiburon1.constante_friccion--;
+    tiburon2.constante_friccion--;
     break;
   case TAB: // Mantener para ver los controles
     estadoActual = EstadoPantalla.CONTROLES;
@@ -207,6 +255,27 @@ void keyReleased() {
     destinoPeces.y += 0.0;
     destinoPeces.z += 0.0;
   }
+  if (keyCode == '+' || keyCode == '-') {
+    pezLider.constante_friccion += 0;
+
+    for (int counter = 0; counter < pezRojo.length; counter ++) {
+      pezRojo[counter].constante_friccion += 0;
+    }
+    for (int counter = 0; counter < pezAzul.length; counter ++) {
+      pezAzul[counter].constante_friccion += 0;
+    }
+    for (int counter = 0; counter < pezVerde.length; counter ++) {
+      pezVerde[counter].constante_friccion += 0;
+    }
+    for (int counter = 0; counter < pezNemo.length; counter ++) {
+      pezNemo[counter].constante_friccion += 0;
+    }
+
+    tiburonLider.constante_friccion += 0;
+    tiburon1.constante_friccion += 0;
+    tiburon2.constante_friccion += 0;
+  }
+
   // Dejar de mantener para la visualización de los controles
   if (keyCode == TAB || keyCode == '0' || keyCode == '9') {
     estadoActual = EstadoPantalla.PANTALLA;
