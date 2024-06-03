@@ -1,11 +1,13 @@
 // Alfredo Ugarte y Pol Blesa
 // AA3 --> Banco de peces y tres tiburones que los persiguen
 
-// Dos escenas:
+// Cuatro escenas:
 // PANTALLA --> escena principal
 // CONTROLES --> se abre manteniendo pulsado "TAB", para ver los distintos usos de los controles
+// ISOMETRICA --> vista isométrica
+// SUPERIOR --> vista ortográfica superior
 enum EstadoPantalla {
-  PANTALLA, CONTROLES
+  PANTALLA, CONTROLES, ISOMETRICA, SUPERIOR
 }
 
 // Estado de la pantalla
@@ -44,12 +46,11 @@ void setup() {
   // Pantalla del menu principal
   estadoActual = EstadoPantalla.PANTALLA;
 
-
   // Obstáculos
-  obstaculo1 = new obstaculos(new PVector(-100.0, -100.0, -100.0), new PVector(random(0.0, width), random(100.0, height / 1.75), random(100.0, -350.0)), 100.0, 100.0, 100.0, color(0));
-  obstaculo2 = new obstaculos(new PVector(100.0, 100.0, 100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(100.0, -350.0)), 100.0, 100.0, 100.0, color(0));
-  obstaculo3 = new obstaculos(new PVector(-100.0, 100.0, 100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(100.0, -350.0)), 100.0, 100.0, 100.0, color(0));
-  obstaculo4 = new obstaculos(new PVector(100.0, -100.0, -100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(100.0, -350.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo1 = new obstaculos(new PVector(-100.0, -100.0, -100.0), new PVector(random(0.0, width), random(100.0, height / 1.75), random(50.0, -350.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo2 = new obstaculos(new PVector(100.0, 100.0, 100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(50.0, -350.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo3 = new obstaculos(new PVector(-100.0, 100.0, 100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(50.0, -350.0)), 100.0, 100.0, 100.0, color(0));
+  obstaculo4 = new obstaculos(new PVector(100.0, -100.0, -100.0), new PVector(random(0.0, width), random(0.0, height / 1.75), random(50.0, -350.0)), 100.0, 100.0, 100.0, color(0));
 
 
   // Peces
@@ -82,8 +83,19 @@ void setup() {
 // Draw
 void draw() {
 
+
   // Color azul marino para el fondo
   background(#2d2c55);
+
+  // Fondo del mar
+  pushMatrix();
+  translate(width / 2.0, 9000.0, -1000.0);
+  fill(255, 225, 225);
+  noStroke();
+  sphereDetail(100);
+  lights();
+  sphere(7500);
+  popMatrix();
 
   // Caja de texto informativo
   pushMatrix();
@@ -99,6 +111,21 @@ void draw() {
   textAlign(CENTER);
   text(text, 0.0, height - 40.0, width, height - 40.0);
   popMatrix();
+
+  // Estado de la pantalla
+  switch(estadoActual) {
+  case PANTALLA:
+    break;
+  case CONTROLES:
+    escenaControles();
+    break;
+  case ISOMETRICA:
+    escenaIsometrica();
+    break;
+  case SUPERIOR:
+    escenaSuperior();
+    break;
+  }
 
   // Calcular y pintar el pez líder
   pezLider.calcular_pez();
@@ -137,15 +164,6 @@ void draw() {
   obstaculo2.pinta_obstaculo();
   obstaculo3.pinta_obstaculo();
   obstaculo4.pinta_obstaculo();
-
-  // Estado de la pantalla
-  switch(estadoActual) {
-  case PANTALLA:
-    break;
-  case CONTROLES:
-    escenaControles();
-    break;
-  }
 }
 
 // Eventos
@@ -170,6 +188,12 @@ void keyPressed() {
   case '6': // Disminuye -150 la coordenada Z del destino
     destinoPeces.z -= 150.0;
     break;
+  case '0':
+    estadoActual = EstadoPantalla.ISOMETRICA;
+    break;
+  case '9':
+    estadoActual = EstadoPantalla.SUPERIOR;
+    break;
   case TAB: // Mantener para ver los controles
     estadoActual = EstadoPantalla.CONTROLES;
   }
@@ -184,7 +208,7 @@ void keyReleased() {
     destinoPeces.z += 0.0;
   }
   // Dejar de mantener para la visualización de los controles
-  if (keyCode == TAB) {
+  if (keyCode == TAB || keyCode == '0' || keyCode == '9') {
     estadoActual = EstadoPantalla.PANTALLA;
   }
 }
